@@ -4,9 +4,9 @@
 **Interfaz / Modalidad:** Consola — Multijuego  
 
 ## Integrantes y aportes
-- Agustín Cozzoli
-- Mateo Sebastián Frutos Ibarra
-- Juan Gabriel Montaña
+- Agustín Cozzoli (@Aguz2)
+- Mateo Sebastián Frutos Ibarra (@mateoIbarra-1)
+- Juan Gabriel Montaña (@JuanMont-code)
 
 ## Reglas y alcance
 La propuesta presentada consiste en desarrollar un casino por consola con un sistema común de dinero o fichas y un menú desde el cual el jugador pueda seleccionar diferentes juegos.
