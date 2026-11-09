@@ -9,6 +9,7 @@ bin/
 dist/
 
 # Archivos de depuración y temporales
+*.bat
 *.dSYM/
 *.pdb
 *.ilk
@@ -21,3 +22,6 @@ dist/
 *~
 .DS_Store
 Thumbs.db
+
+# Carpeta con archivos de prueba
+Test/

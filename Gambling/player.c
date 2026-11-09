@@ -85,7 +85,9 @@ int load_game(Player *player){
     if(fread(player, sizeof(Player), 1, archivo) != 1){
         printf("No hay partidas guardadas\n");
         fclose(archivo);
+
         new_game(player);
+
         return 0;
     }
 
@@ -126,13 +128,15 @@ int load_game(Player *player){
 int save_game(Player *player, int ask){
     Player check;
     FILE *archivo;
-    archivo = fopen("Saves", "rb+");
+    archivo = fopen("Saves", "ab+");
     int exist = 0, position = 0;
 
     if(archivo == NULL){
         printf("Hubo un error\n");
         return 1;
     }
+    
+    rewind(archivo);
 
     while(fread(&check, sizeof(Player), 1, archivo) == 1 && exist == 0){
         position++;
@@ -147,12 +151,12 @@ int save_game(Player *player, int ask){
 
     if(exist == 1){
         if(ask == 1){
-
             printf("\nEl nombre %s ya esta registrado\n", player->name);
             printf("Quiere sobreescribir los datos?\n");
 
-            printf(" s\n");
-            printf(" n\n");
+            printf(" Si\n");
+            printf(" No\n");
+
             int option = pointer(2);
 
             switch(option){
@@ -195,8 +199,7 @@ int begin(Player *player){
         break;
         
         case 1:
-            load_game(player);
-        break;
+            return load_game(player);
     }
 
     return 0;
