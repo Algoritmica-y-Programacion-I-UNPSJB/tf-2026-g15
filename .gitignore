@@ -9,7 +9,6 @@ bin/
 dist/
 
 # Archivos de depuración y temporales
-*.bat
 *.dSYM/
 *.pdb
 *.ilk
