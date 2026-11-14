@@ -98,6 +98,8 @@ int ranking(){
         }
     }
 
+    free(players);
+
     printf("\n\n");
     return 0;
 }
