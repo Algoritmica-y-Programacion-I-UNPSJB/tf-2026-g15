@@ -22,4 +22,6 @@ int save_game();
 
 int pointer();
 
+int ranking();
+
 #endif

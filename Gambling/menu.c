@@ -5,11 +5,12 @@
 
 static int mostrar_menu(void){
     printf(" Jugar\n");
+    printf(" Ranking\n");
     printf(" Guardar juego\n");
     printf(" Cargar juego\n");
     printf(" Salir\n");
 
-    int option = pointer(4);
+    int option = pointer(5);
 
     return option;
 }
@@ -41,21 +42,25 @@ int menu(Player *player){
 
     while(1){
         switch(mostrar_menu()){
-            case 0:  //Jugar
+            case 0:
                 mostrar_juegos(player);
                 return 0;
-
+            
             case 1:
+                ranking();
+                break;
+
+            case 2:
                 save_game(player, 1);
                 return 0;
 
-            case 2:
+            case 3:
                 if(load_game(player) == 1){
                     return 1;
                 }
                 return 0;
 
-            case 3:  //Salir
+            case 4:  //Salir
                 save_game(player, 1);
                 printf("See you next time :)");
                 return 1;

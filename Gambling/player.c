@@ -128,15 +128,12 @@ int load_game(Player *player){
 int save_game(Player *player, int ask){
     Player check;
     FILE *archivo;
-    archivo = fopen("Saves", "ab+");
+    archivo = fopen("Saves", "rb+");
     int exist = 0, position = 0;
 
     if(archivo == NULL){
-        printf("Hubo un error\n");
-        return 1;
+        archivo = fopen("Saves", "wb+");
     }
-    
-    rewind(archivo);
 
     while(fread(&check, sizeof(Player), 1, archivo) == 1 && exist == 0){
         position++;
