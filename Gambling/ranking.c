@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Library/player.h"
+#define TOP 10
 
 static int contar(FILE *archivo){
     Player temp;
@@ -82,9 +83,14 @@ int ranking(){
 
     quick_sort(players, cantidad);
 
-    printf("\n\n======== Ranking ========\n");
+    /*
+    if(cantidad >= TOP){
+        players = (Player*)realloc(players, sizeof(Player) * TOP);
+        cantidad = TOP;   
+    }
+    */
 
-    int posicion = 1;
+    printf("\n\n======== Ranking ========\n");
 
     printf("1. %s | %llu", players[0].name, players[0].wallet);
 
@@ -92,7 +98,7 @@ int ranking(){
         if(players[i].wallet == players[i-1].wallet){
             printf("; %s | %llu", players[i].name, players[i].wallet);
         }else{
-            posicion = i+1;
+            int posicion = i+1;
             printf("\n");
             printf("%d. %s | %llu",posicion, players[i].name, players[i].wallet);
         }

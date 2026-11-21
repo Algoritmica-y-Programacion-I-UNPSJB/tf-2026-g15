@@ -19,7 +19,7 @@ static void show_roulette(){
     return;
 }
 
-typedef void (*apuestas)(int*, Bet*, int*, int*);
+typedef void (*apuestas)(Bet*, int*, int*);
 
 static void init_bet(int *user, Player *player, Bet *bet, int *amount_bet){
     if(*user == 8 || *user == 9)
@@ -38,7 +38,7 @@ static void init_bet(int *user, Player *player, Bet *bet, int *amount_bet){
     }
 
     if((monto + bet->total) <= player->wallet){
-        options[*user](user, bet, amount_bet, &monto);
+        options[*user](bet, amount_bet, &monto);
     }else{
         printf("Saldo insuficiente :(\n");
     }
@@ -90,8 +90,8 @@ void roulette(Player *player){
         }
 
         printf("Saldo: %llu$\n", player->wallet);
-        bettozero(&bet, &amount_bet);
         save_game(player, 0);
+        bettozero(&bet, &amount_bet);
         printf("=================================================================\n");
     }while(user != 9);
 

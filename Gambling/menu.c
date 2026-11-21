@@ -31,7 +31,7 @@ static void mostrar_juegos(Player *player){
             roulette(player);
             return;
 
-        case 1:
+        default:
             return;
     }
 }

@@ -114,4 +114,6 @@ void start_bet(Player *player, Bet *bet){
     printf("Resultado: %d %s\n", result, color_result);
 
     win_result(player, bet, result, colors);
+    
+    return;
 }
