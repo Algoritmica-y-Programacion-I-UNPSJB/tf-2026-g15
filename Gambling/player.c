@@ -12,7 +12,15 @@ static void State(Player *player, char *life){
 
     return;
 }
+/*
+    Input: limite
+    Es la cantidad de opciones disponibles.
+    las opciones deben estar en fila de arriba a abajo
 
+    Output: option
+    Es la opcion elegida por el usuario
+    el rango es de 0 a (limite-1)
+*/
 int pointer(int limite){
     int option = 0;
     int keyword = 0;

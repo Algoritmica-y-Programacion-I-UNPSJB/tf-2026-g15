@@ -32,7 +32,7 @@ void bet_number(Bet *bet, int *amount_bet, int *monto){
     int user = 0;
 
     printf("Elija un numero del 0-36\n>");
-    scanf("%d", user);
+    scanf("%d", &user);
 
     if(user >= 0 && user <= 36){
         printf("%d$ al %d\n", *monto, user);

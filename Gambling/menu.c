@@ -4,11 +4,11 @@
 #include "Library/games.h"
 
 static int mostrar_menu(void){
-    printf(" Jugar\n");
-    printf(" Ranking\n");
-    printf(" Guardar juego\n");
-    printf(" Cargar juego\n");
-    printf(" Salir\n");
+    puts(" Jugar");
+    puts(" Ranking");
+    puts(" Guardar juego");
+    puts(" Cargar juego");
+    puts(" Salir");
 
     int option = pointer(5);
 
@@ -17,18 +17,22 @@ static int mostrar_menu(void){
 
 static void mostrar_juegos(Player *player){
     printf("\nDinero actuales: %llu\n", player->wallet);
-    printf("Elija el juego:\n");
+    puts("Elija el juego:\n");
 
-    printf(" Ruleta\n");
-    printf(" Volver\n");
+    puts(" Ruleta");
+    puts(" Ruleta Rusa");
+    puts(" Volver");
 
-    int option = pointer(2);
+    int option = pointer(3);
 
     printf("\n");
 
     switch(option){
         case 0:
             roulette(player);
+            return;
+        case 1:
+            russian(player);
             return;
 
         default:
@@ -37,13 +41,16 @@ static void mostrar_juegos(Player *player){
 }
 
 int menu(Player *player){
-    printf("====== CASINO ======\n");
+    puts("\n====== CASINO ======");
     printf("Bienvenido %s\n", player->name);
 
     while(1){
         switch(mostrar_menu()){
             case 0:
                 mostrar_juegos(player);
+                save_game(player);
+                if(player->estado == MUERTO)
+                    return 1;
                 return 0;
             
             case 1:
@@ -62,7 +69,7 @@ int menu(Player *player){
 
             case 4:  //Salir
                 save_game(player, 1);
-                printf("See you next time :)");
+                puts("See you next time :)");
                 return 1;
         }
     }
