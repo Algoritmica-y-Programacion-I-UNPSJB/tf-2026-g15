@@ -111,12 +111,6 @@ void russian(Player *player){
 
     gun.position = rand() % SPACE;
 
-    for(int i = 0; i < SPACE; i++){
-        printf("%s ", gun.blank[i] == true ? "bala":"fogeo");
-    }
-
-    printf("\nInicio: %d\n", gun.position+1);
-
     int result = game_begin(gun);
 
     if(result == -1){
