@@ -10,7 +10,7 @@
 typedef struct{
     bool blank[SPACE];
     int position;
-    int ammon;
+    int ammo;
 }Revolver;
 
 static int choice(){
@@ -86,12 +86,11 @@ void russian(Player *player){
     puts("====== Russian Roulette ======");
     puts("Cuantas balas?\n");
 
-    gun.ammon = choice();
-    srand(time(NULL));
+    gun.ammo = choice();
 
-    amount = bet(gun.ammon);
+    amount = bet(gun.ammo);
 
-    for(int i = 0; i < gun.ammon; i++){
+    for(int i = 0; i < gun.ammo; i++){
         int random = rand() % SPACE;
 
         for(int i = 0; gun.blank[random] == true; i++){

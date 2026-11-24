@@ -1,22 +1,22 @@
 #ifndef SETBET
 #define SETBET
 
-void bettozero();
+void bettozero(Bet* bet, int* amount_bet);
 
-void bet_number();
+void bet_number(Bet* bet, int* amount_bet, int* monto);
 
-void bet_odd();
+void bet_odd(Bet* bet, int* amount_bet, int* monto);
 
-void bet_even();
+void bet_even(Bet* bet, int* amount_bet, int* monto);
 
-void bet_dozens();
+void bet_dozens(Bet* bet, int* amount_bet, int* monto);
 
-void bet_columns();
+void bet_columns(Bet* bet, int* amount_bet, int* monto);
 
-void bet_color();
+void bet_color(Bet* bet, int* amount_bet, int* monto);
 
-void bet_onetoeighteen();
+void bet_onetoeighteen(Bet* bet, int* amount_bet, int* monto);
 
-void bet_nineteentothirtysix();
+void bet_nineteentothirtysix(Bet* bet, int* amount_bet, int* monto);
 
 #endif

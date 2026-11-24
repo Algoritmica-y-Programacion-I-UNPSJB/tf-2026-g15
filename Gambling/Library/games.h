@@ -3,6 +3,6 @@
 
 void roulette();
 
-int russian();
+void russian();
 
 #endif

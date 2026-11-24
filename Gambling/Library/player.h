@@ -14,13 +14,13 @@ typedef struct{
     enum Estado estado;
 }Player;
 
-int begin();
+int begin(Player *player);
 
-int load_game();
+int load_game(Player *player);
 
-int save_game();
+int save_game(Player *player, int ask);
 
-int pointer();
+int pointer(int limit);
 
 int ranking();
 

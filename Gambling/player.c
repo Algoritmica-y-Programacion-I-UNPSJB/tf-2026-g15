@@ -12,14 +12,15 @@ static void State(Player *player, char *life){
 
     return;
 }
-/*
-    Input: limite
-    Es la cantidad de opciones disponibles.
-    las opciones deben estar en fila de arriba a abajo
 
-    Output: option
-    Es la opcion elegida por el usuario
-    el rango es de 0 a (limite-1)
+/*
+    Input: 
+        limite: Es la cantidad de opciones disponibles.
+        las opciones deben estar en fila de arriba a abajo
+
+    Output: 
+        option: Es la opcion elegida por el usuario
+        el rango es de 0 a (limite-1)
 */
 int pointer(int limite){
     int option = 0;
@@ -79,6 +80,14 @@ static void new_game(Player *player){
     return;
 }
 
+/*
+    Input: *player
+        player: Recibe el puntero al jugador
+
+    Output: 
+        0: No hubo errores
+        1: Error al abrir el archivo de saves
+*/
 int load_game(Player *player){
     FILE *archivo;
     archivo = fopen("Saves", "rb+");
@@ -86,12 +95,12 @@ int load_game(Player *player){
     char life[7];
 
     if(archivo == NULL){
-        printf("Hubo un error al abrir el archivo\n");
+        puts("Hubo un error al abrir el archivo");
         return 1;
     }
 
     if(fread(player, sizeof(Player), 1, archivo) != 1){
-        printf("No hay partidas guardadas\n");
+        puts("No hay partidas guardadas");
         fclose(archivo);
 
         new_game(player);
@@ -133,6 +142,17 @@ int load_game(Player *player){
     }
 }
 
+/*
+    Input:
+    player: puntero al jugador
+    ask: acepta 0 o 1
+    si es 0, guarda sin preguntar al usuario
+    si es 1, pregunta al usuario si quiere sobreescribir
+
+    Output:
+    0: Se guardo el jugador sin problemas
+    2: El usuario no quiso sobreescribir los datos
+*/
 int save_game(Player *player, int ask){
     Player check;
     FILE *archivo;
@@ -149,9 +169,7 @@ int save_game(Player *player, int ask){
         if(strcmp(check.name, player->name) == 0){
             exist = 1;
             position--;
-
         }
-
     }
 
     if(exist == 1){
@@ -185,13 +203,19 @@ int save_game(Player *player, int ask){
 
     }else{
         fwrite(player, sizeof(Player), 1, archivo);
-
     }
 
     fclose(archivo);
     return 0;
 }
 
+/*
+    Input: 
+        player: Perfil del jugador actual
+    Output:
+        0: No hubo errores
+        1: No se puedo abrir el archivo "Saves"
+*/
 int begin(Player *player){
     printf(" iniciar nuevo juego\n");
     printf(" cargar partida\n");

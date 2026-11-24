@@ -19,6 +19,22 @@ static void show_roulette(){
     return;
 }
 
+static void show_rules(){
+    puts("\n========== REGLAS DE LA RULETA ==========");
+    puts("1. Elegi uno o varios tipos de apuesta y asignales un monto.");
+    puts("2. La suma de las apuestas no puede superar tu saldo.");
+    puts("3. No podes iniciar una ronda sin haber apostado.");
+    puts("4. La ruleta elige al azar un numero entre 0 y 36.");
+    puts("5. El 0 es verde: no gana par/impar, color, rangos, docenas ni columnas.");
+    puts("\nPagos:");
+    puts("- Par, impar, rojo, negro, 1-18 y 19-36: pagan 2 veces la apuesta.");
+    puts("- Docenas y columnas: pagan 3 veces la apuesta.");
+    puts("- Numero especifico: paga segun la cantidad de numeros apostados.");
+    puts("  1 numero: x36 | 2: x18 | 3: x12 | 4-5: x9 | 6 o mas: x6.");
+
+    return;
+}
+
 typedef void (*apuestas)(Bet*, int*, int*);
 
 static void init_bet(int *user, Player *player, Bet *bet, int *amount_bet){
@@ -53,10 +69,10 @@ void roulette(Player *player){
     int user = 0, amount_bet = 0;
 
     printf("======= Ruleta ======\n");
+
+    show_roulette();
     
     do{
-        show_roulette();
-    
         bettozero(&bet, &amount_bet);
 
         printf("\nhaga su apuesta: \n");
@@ -71,8 +87,15 @@ void roulette(Player *player){
             printf(" 19-36\n");
             printf(" iniciar\n");
             printf(" Salir\n");
+            printf(" Reglas\n");
 
-            user = pointer(10);
+            user = pointer(11);
+
+            if(user == 10){
+                show_rules();
+                user = 0;
+                continue;
+            }
 
             init_bet(&user, player, &bet, &amount_bet);
 
@@ -92,6 +115,7 @@ void roulette(Player *player){
         printf("Saldo: %llu$\n", player->wallet);
         save_game(player, 0);
         bettozero(&bet, &amount_bet);
+        
         printf("=================================================================\n");
     }while(user != 9);
 

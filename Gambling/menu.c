@@ -48,7 +48,8 @@ int menu(Player *player){
         switch(mostrar_menu()){
             case 0:
                 mostrar_juegos(player);
-                save_game(player);
+                save_game(player, 0);
+                
                 if(player->estado == MUERTO)
                     return 1;
                 return 0;

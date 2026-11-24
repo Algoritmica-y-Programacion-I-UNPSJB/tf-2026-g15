@@ -3,7 +3,6 @@
 #include "roulette.h"
 #include "start_bet.h"
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
 
 #define AMOUT 37
@@ -105,8 +104,6 @@ void start_bet(Player *player, Bet *bet){
     };
     int result;
     char color_result[10];
-
-    srand(time(NULL));
 
     result = rand() % AMOUT;
     which_color(colors, result, color_result);

@@ -74,7 +74,14 @@ int ranking(){
 
     Player *players = (Player*)malloc(sizeof(Player) * cantidad);
 
-    for(int i = 0; fread(&players[i], sizeof(Player), 1, archivo) == 1 && i < cantidad;){
+    if(players == NULL){
+        puts("Hubo un error");
+        return -1;
+    }
+
+    for(int i = 0; i < cantidad;){
+        fread(&players[i], sizeof(Player), 1, archivo);
+
         if(players[i].estado == VIVO)
             i++;
     }

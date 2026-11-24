@@ -38,10 +38,13 @@ void bet_number(Bet *bet, int *amount_bet, int *monto){
         printf("%d$ al %d\n", *monto, user);
         printf("apuesta concretada\n");
 
+        if(bet->number[user] == 0){
+            bet->count++;
+            (*amount_bet)++;
+        }
+        
         bet->number[user] += *monto;
         bet->total += *monto;
-        bet->count++;
-        (*amount_bet)++;
     }else{
         printf("Numero invalido\n");
     }
@@ -96,9 +99,9 @@ void bet_dozens(Bet *bet, int *amount_bet, int *monto){
 
 void bet_columns(Bet *bet, int *amount_bet, int *monto){
     printf("A que columna queres apostar?\n");
-    printf(" 1ra (3 6 9 12 15 18 21 24 27 30 33 36)\n");
+    printf(" 3ra (3 6 9 12 15 18 21 24 27 30 33 36)\n");
     printf(" 2da (2 5 8 11 14 17 20 23 26 29 32 35)\n");
-    printf(" 3ra (1 4 7 10 13 16 19 22 25 28 31 34)\n");
+    printf(" 1ra (1 4 7 10 13 16 19 22 25 28 31 34)\n");
 
     int user = pointer(3);
 
